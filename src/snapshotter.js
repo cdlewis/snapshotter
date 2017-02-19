@@ -1,7 +1,5 @@
 import { get, isEqual } from 'lodash'
 import { readFileSync, writeFileSync } from 'fs'
-import { dirname, relative } from 'path'
-import path from 'path'
 import process from 'process'
 import readlineSync from 'readline-sync'
 import { shallowToJson } from 'enzyme-to-json'
@@ -37,7 +35,7 @@ const maybeUpdateSnapshot = (snapshotPath, relativeSnapshotPath, component) => {
 
 module.exports = (assert, component, id, outputBuffer = process.stdout) => {
   const serialisedComponent = JSON.parse(stringify(shallowToJson(component)))
-  const {snapshotPath, relativeSnapshotPath} = getSnapshotPath(id)
+  const { snapshotPath, relativeSnapshotPath } = getSnapshotPath(id)
 
   try {
     const snapshot = JSON.parse(readFileSync(snapshotPath))

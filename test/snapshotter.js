@@ -10,12 +10,8 @@ const TestClass = () => (
   </div>
 )
 
-const mockTape = {
-  pass: () => {},
-  fail: () => {},
-}
-
 test('snapshotter detects changes', (assert) => {
+  const mockTape = { fail: () => {} }
   const shallowWrapper = shallow(<TestClass />)
   compareToSnapshot(mockTape, shallowWrapper, 'TestClass', {
     write: (diff) => {
@@ -23,4 +19,10 @@ test('snapshotter detects changes', (assert) => {
       assert.end()
     },
   })
+})
+
+test('snapshotter handles multiple files', (assert) => {
+  const shallowWrapper = shallow(<TestClass />)
+  compareToSnapshot(assert, shallowWrapper, 'TestClass-Fixed')
+  assert.end()
 })

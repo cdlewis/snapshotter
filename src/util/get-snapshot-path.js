@@ -1,15 +1,21 @@
 /* global global */
 
 import { get, set } from 'lodash'
-import getPackageRoot from './get-package-root'
 import path from 'path'
 import { readFileSync } from 'fs'
+import getPackageRoot from './get-package-root'
+
+const getSnapshotFilePath = (packageRoot, snapshotDir, id) => {
+  const snapshotPath = path.join(snapshotDir, `${id}.json`)
+  const relativeSnapshotPath = path.relative(packageRoot, snapshotPath)
+  return { relativeSnapshotPath, snapshotPath }
+}
 
 export default (id) => {
-  const cachedPath = get(global, 'snapshotter.testPath')
-
-  if (cachedPath) {
-    return cachedPath
+  const cacheHit = get(global, 'snapshotter')
+  if (cacheHit) {
+    const { packageRoot, snapshotPath } = cacheHit
+    return getSnapshotFilePath(packageRoot, snapshotPath, id)
   }
 
   const packageRoot = getPackageRoot()
@@ -17,13 +23,6 @@ export default (id) => {
     snapshotPath: './test/snapshots',
   })
 
-  const snapshotPath = path.join(config.snapshotPath, `${id}.json`)
-
-  const result = {
-    snapshotPath,
-    relativeSnapshotPath: path.relative(packageRoot, snapshotPath),
-  }
-
-  set(global, 'snapshotter.snapshotPath', result)
-  return result
+  set(global, 'snapshotter', { ...config, packageRoot })
+  return getSnapshotFilePath(packageRoot, config.snapshotPath, id)
 }
