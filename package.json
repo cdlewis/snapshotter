@@ -1,0 +1,39 @@
+{
+  "name": "snapshotter",
+  "version": "1.0.0",
+  "description": "Snapshot testing for Tape",
+  "main": "dist/snapshotter.js",
+  "scripts": {
+    "build": "rm -rf dist && BABEL_ENV=dev babel src --ignore \"**/*.test.js\" --out-dir dist",
+    "lint": "eslint .",
+    "preversion": "BABEL_ENV=dev npm test",
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push && git push --tags",
+    "test": "babel-node test/snapshotter.js"
+  },
+  "author": "Chris Lewis",
+  "license": "MIT",
+  "dependencies": {
+    "enzyme-to-json": "^1.4.5",
+    "jest-diff": "^18.1.0",
+    "lodash": "^4.0.0",
+    "readline-sync": "^1.4.6"
+  },
+  "peerDependencies": {
+    "tape": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "enzyme": "^2.4.1",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
+    "react": "~15.4.0",
+    "react-addons-test-utils": "^15.4.2",
+    "tape": "^4.0.0"
+  }
+}
