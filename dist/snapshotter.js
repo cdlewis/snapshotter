@@ -4,10 +4,6 @@ var _lodash = require('lodash');
 
 var _fs = require('fs');
 
-var _path = require('path');
-
-var _path2 = _interopRequireDefault(_path);
-
 var _process = require('process');
 
 var _process2 = _interopRequireDefault(_process);
