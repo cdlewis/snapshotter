@@ -20,6 +20,7 @@
   "dependencies": {
     "enzyme-to-json": "^1.4.5",
     "jest-diff": "^18.1.0",
+    "jest-file-exists": "^17.0.0",
     "lodash": "^4.0.0",
     "readline-sync": "^1.4.6"
   },
@@ -39,5 +40,8 @@
     "react": "~15.4.0",
     "react-addons-test-utils": "^15.4.2",
     "tape": "^4.0.0"
+  },
+  "snapshotter": {
+    "snapshotPath": "./test/snapshots"
   }
 }

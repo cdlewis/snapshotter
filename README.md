@@ -10,8 +10,18 @@ existing Tape/Enzyme setup while providing some basic snapshot functionality.
 
 ## Install
 
+Add the package:
+
 ```
 npm install --save-dev snapshotter
+```
+
+Create a snapshots folder (e.g. `mkdir test/snapshots`) and add it to `package.json`. If you do not specify a folder, Snapshotter will default to `test/snapshots`.
+
+```
+"snapshotter": {
+  "snapshotPath": "./test/snapshots"
+}
 ```
 
 ## Usage
