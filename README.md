@@ -46,7 +46,7 @@ test('TestClass renders', (assert) => {
 
 ## Update snapshots
 
-To update snapshots, set the UPDATE_SNAPSHOTS to a non-falsy value.
+To update snapshots, set the `UPDATE_SNAPSHOTS` to a non-falsy value.
 
 ```
 UPDATE_SNAPSHOTS=1 npm run test
