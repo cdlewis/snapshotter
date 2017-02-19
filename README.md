@@ -8,13 +8,13 @@ existing Tape/Enzyme setup while providing some basic snapshot functionality.
 
 # Getting Started
 
-Install:
+## Install
 
 ```
 npm install --save-dev snapshotter
 ```
 
-Usage:
+## Usage
 
 ```
 import compareToSnapshot from 'snapshotter'
@@ -34,7 +34,7 @@ test('TestClass renders', (assert) => {
 })
 ```
 
-Update snapshots:
+## Update snapshots
 
 To update snapshots, set the UPDATE_SNAPSHOTS to a non-falsy value.
 
