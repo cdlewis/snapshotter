@@ -14,7 +14,7 @@ Install:
 npm install --save-dev snapshotter
 ```
 
-Use:
+Usage:
 
 ```
 import compareToSnapshot from 'snapshotter'
@@ -32,4 +32,12 @@ test('TestClass renders', (assert) => {
   const shallowWrapper = shallow(<TestClass />)
   compareToSnapshot(test, shallowWrapper, 'TestClass');
 })
+```
+
+Update snapshots:
+
+To update snapshots, set the UPDATE_SNAPSHOTS to a non-falsy value.
+
+```
+UPDATE_SNAPSHOTS=1 npm run test
 ```

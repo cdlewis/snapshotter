@@ -89,7 +89,9 @@ var maybeUpdateSnapshot = function maybeUpdateSnapshot(snapshotPath, relativeSna
   }
 };
 
-module.exports = function (assert, component, id, outputBuffer) {
+module.exports = function (assert, component, id) {
+  var outputBuffer = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _process2.default.stdout;
+
   var serialisedComponent = JSON.parse(stringify((0, _enzymeToJson.shallowToJson)(component)));
 
   var _findTestFolder = findTestFolder(),

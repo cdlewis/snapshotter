@@ -54,7 +54,7 @@ const maybeUpdateSnapshot = (snapshotPath, relativeSnapshotPath, component) => {
   }
 }
 
-module.exports = (assert, component, id, outputBuffer) => {
+module.exports = (assert, component, id, outputBuffer = process.stdout) => {
   const serialisedComponent = JSON.parse(stringify(shallowToJson(component)))
 
   const { relativePath, testFolder } = findTestFolder()
