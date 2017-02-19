@@ -30,7 +30,7 @@ const TestClass = () => (
 
 test('TestClass renders', (assert) => {
   const shallowWrapper = shallow(<TestClass />)
-  compareToSnapshot(test, shallowWrapper, 'TestClass');
+  compareToSnapshot(test, shallowWrapper, 'TestClass')
 })
 ```
 
