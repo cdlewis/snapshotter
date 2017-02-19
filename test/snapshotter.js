@@ -1,7 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import test from 'tape'
-
 import { expectedJestDiff } from './fixtures'
 import compareToSnapshot from '../src/snapshotter'
 
