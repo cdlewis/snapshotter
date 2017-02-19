@@ -1,6 +1,6 @@
 {
   "name": "snapshotter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Snapshot testing for Tape",
   "main": "dist/snapshotter.js",
   "scripts": {
