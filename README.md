@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cdlewis/snapshotter.svg?branch=master)](https://travis-ci.org/cdlewis/snapshotter)
+
 # Snapshotter
 
 Snapshot testing is a compelling feature but sometimes it isn't possible to port
