@@ -1,8 +1,11 @@
+import Adapter from 'enzyme-adapter-react-16'
 import React from 'react'
-import { shallow } from 'enzyme'
+import Enzyme from 'enzyme'
 import test from 'tape'
 import { expectedJestDiff } from './fixtures'
 import compareToSnapshot from '../src/snapshotter'
+
+Enzyme.configure({ adapter: new Adapter() })
 
 const TestClass = () => (
   <div>
@@ -12,7 +15,7 @@ const TestClass = () => (
 
 test('snapshotter detects changes', (assert) => {
   const mockTape = { fail: () => {} }
-  const shallowWrapper = shallow(<TestClass />)
+  const shallowWrapper = Enzyme.shallow(<TestClass />)
   compareToSnapshot(mockTape, shallowWrapper, 'TestClass', {
     write: (diff) => {
       assert.deepEqual(diff, expectedJestDiff)
@@ -22,7 +25,7 @@ test('snapshotter detects changes', (assert) => {
 })
 
 test('snapshotter handles multiple files', (assert) => {
-  const shallowWrapper = shallow(<TestClass />)
+  const shallowWrapper = Enzyme.shallow(<TestClass />)
   compareToSnapshot(assert, shallowWrapper, 'TestClass-Fixed')
   assert.end()
 })
