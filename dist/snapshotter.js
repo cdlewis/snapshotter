@@ -52,7 +52,7 @@ var maybeUpdateSnapshot = function maybeUpdateSnapshot(snapshotPath, relativeSna
 module.exports = function (assert, component, id) {
   var outputBuffer = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : _process2.default.stdout;
 
-  var serialisedComponent = JSON.parse(stringify((0, _enzymeToJson.shallowToJson)(component)));
+  var serialisedComponent = JSON.parse(stringify((0, _enzymeToJson.shallowToJson)(component, { noKey: true })));
 
   var _getSnapshotPath = (0, _getSnapshotPath3.default)(id),
       snapshotPath = _getSnapshotPath.snapshotPath,

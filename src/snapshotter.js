@@ -34,7 +34,7 @@ const maybeUpdateSnapshot = (snapshotPath, relativeSnapshotPath, component) => {
 }
 
 module.exports = (assert, component, id, outputBuffer = process.stdout) => {
-  const serialisedComponent = JSON.parse(stringify(shallowToJson(component)))
+  const serialisedComponent = JSON.parse(stringify(shallowToJson(component, { noKey: true })))
   const { snapshotPath, relativeSnapshotPath } = getSnapshotPath(id)
 
   try {
