@@ -41,7 +41,7 @@ var stringify = function stringify(object) {
 
 var maybeUpdateSnapshot = function maybeUpdateSnapshot(snapshotPath, relativeSnapshotPath, component) {
   if ((0, _lodash.get)(_process2.default, 'env.UPDATE_SNAPSHOTS')) {
-    var shouldUpdate = _readlineSync2.default.question('\nWrite new snapshot to ' + relativeSnapshotPath + '? (y/n): ');
+    var shouldUpdate = _readlineSync2.default.question('\n\x07Write new snapshot to ' + relativeSnapshotPath + '? (y/n): ');
 
     if (shouldUpdate === 'y') {
       (0, _fs.writeFileSync)(snapshotPath, stringify(component), { flag: 'w' });
