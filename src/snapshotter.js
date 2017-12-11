@@ -21,7 +21,7 @@ const stringify = object => JSON.stringify(object, (key, value) => {
 
 const maybeUpdateSnapshot = (snapshotPath, relativeSnapshotPath, component) => {
   if (get(process, 'env.UPDATE_SNAPSHOTS')) {
-    const shouldUpdate = readlineSync.question(`\nWrite new snapshot to ${relativeSnapshotPath}? (y/n): `)
+    const shouldUpdate = readlineSync.question(`\n\x07Write new snapshot to ${relativeSnapshotPath}? (y/n): `)
 
     if (shouldUpdate === 'y') {
       writeFileSync(
