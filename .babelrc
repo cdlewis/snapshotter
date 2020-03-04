@@ -1,6 +1,11 @@
 {
   "presets": [
-    "es2015"
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry"
+      }
+    ]
   ],
   "plugins": [
     "transform-object-rest-spread",
