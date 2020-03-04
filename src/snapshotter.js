@@ -1,17 +1,17 @@
-import { get, isEqual } from "lodash";
-import { readFileSync, writeFileSync } from "fs";
-import process from "process";
-import readlineSync from "readline-sync";
-import { shallowToJson } from "enzyme-to-json";
-import diff from "jest-diff";
-import getSnapshotPath from "./util/get-snapshot-path";
+import { get, isEqual } from 'lodash';
+import { readFileSync, writeFileSync } from 'fs';
+import process from 'process';
+import readlineSync from 'readline-sync';
+import { shallowToJson } from 'enzyme-to-json';
+import diff from 'jest-diff';
+import getSnapshotPath from './util/get-snapshot-path';
 
 const stringify = object =>
   JSON.stringify(
     object,
     (key, value) => {
-      if (typeof value === "function") {
-        return "[Function]";
+      if (typeof value === 'function') {
+        return '[Function]';
       }
 
       return value;
@@ -25,13 +25,13 @@ const stringify = object =>
  */
 
 const maybeUpdateSnapshot = (snapshotPath, relativeSnapshotPath, component) => {
-  if (get(process, "env.UPDATE_SNAPSHOTS")) {
+  if (get(process, 'env.UPDATE_SNAPSHOTS')) {
     const shouldUpdate = readlineSync.question(
       `\n\x07Write new snapshot to ${relativeSnapshotPath}? (y/n): `
     );
 
-    if (shouldUpdate === "y") {
-      writeFileSync(snapshotPath, stringify(component), { flag: "w" });
+    if (shouldUpdate === 'y') {
+      writeFileSync(snapshotPath, stringify(component), { flag: 'w' });
     }
   }
 };
