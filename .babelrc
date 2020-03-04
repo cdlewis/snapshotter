@@ -3,12 +3,12 @@
     [
       "@babel/preset-env",
       {
-        "useBuiltIns": "entry"
+        "useBuiltIns": "entry",
+        "corejs": 3
       }
     ]
   ],
   "plugins": [
-    "transform-object-rest-spread",
-    "transform-react-jsx"
+    "@babel/plugin-transform-react-jsx"
   ]
 }
