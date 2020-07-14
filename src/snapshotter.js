@@ -1,6 +1,5 @@
 import { get, isEqual } from 'lodash';
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
-import process from 'process';
 import readlineSync from 'readline-sync';
 import { shallowToJson } from 'enzyme-to-json';
 import diff from 'jest-diff';
