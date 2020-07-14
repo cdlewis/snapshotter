@@ -44,7 +44,7 @@ module.exports = (assert, component, id, outputBuffer = process.stdout) => {
   const { snapshotPath, relativeSnapshotPath } = getSnapshotPath(id);
 
   try {
-    const snapshot = JSON.parse(readFileSync(snapshotPath));
+    const snapshot = JSON.parse(readFileSync(snapshotPath).toString());
     if (isEqual(serialisedComponent, snapshot)) {
       assert.pass(`Snapshot matches ${id}`);
       return;
