@@ -15,13 +15,13 @@ includes built-in support for serialising Enzyme components.
 
 Add the package:
 
-```
+```sh
 npm install --save-dev snapshotter
 ```
 
 Create a snapshots folder (e.g. `mkdir test/snapshots`) and add it to `package.json`. If you do not specify a folder, Snapshotter will default to `test/snapshots`.
 
-```
+```json
 "snapshotter": {
   "snapshotPath": "./test/snapshots"
 }
@@ -29,7 +29,7 @@ Create a snapshots folder (e.g. `mkdir test/snapshots`) and add it to `package.j
 
 ## Usage
 
-```
+```jsx
 import compareToSnapshot from 'snapshotter'
 import React from 'react'
 import { shallow } from 'enzyme'
@@ -52,6 +52,6 @@ test('TestClass renders', (assert) => {
 
 To update snapshots, set the `UPDATE_SNAPSHOTS` to a non-falsy value.
 
-```
+```sh
 UPDATE_SNAPSHOTS=1 npm run test
 ```
