@@ -2,6 +2,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import React from 'react';
 import Enzyme from 'enzyme';
 import test from 'tape';
+import { expectedJestDiff } from './fixtures';
 import compareToSnapshot from '../src/snapshotter';
 
 Enzyme.configure({ adapter: new Adapter() });
