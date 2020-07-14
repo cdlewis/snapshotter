@@ -47,7 +47,7 @@ var _default = id => {
   const config = (0, _lodash.get)(JSON.parse((0, _fs.readFileSync)(`${packageRoot}/package.json`)), 'snapshotter', {
     snapshotPath: './test/snapshots'
   });
-  (0, _lodash.set)(global, 'snapshotter', _objectSpread({}, config, {
+  (0, _lodash.set)(global, 'snapshotter', _objectSpread(_objectSpread({}, config), {}, {
     packageRoot
   }));
   return getSnapshotFilePath(packageRoot, config.snapshotPath, id);

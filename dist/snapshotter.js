@@ -14,6 +14,10 @@ var _jestDiff = _interopRequireDefault(require("jest-diff"));
 
 var _getSnapshotPath = _interopRequireDefault(require("./util/get-snapshot-path"));
 
+var _utils = require("enzyme-to-json/utils.js");
+
+var _path = require("path");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const stringify = object => JSON.stringify(object, (key, value) => {
@@ -34,6 +38,11 @@ const maybeUpdateSnapshot = (snapshotPath, relativeSnapshotPath, component) => {
     const shouldUpdate = _readlineSync.default.question(`\n\x07Write new snapshot to ${relativeSnapshotPath}? (y/n): `);
 
     if (shouldUpdate === 'y') {
+      // Attempt to create the directory if it doesn't already exist (requires Node 10+)
+      const parentDirectory = (0, _path.dirname)(snapshotPath);
+      (0, _fs.mkdirSync)(parentDirectory, {
+        recursive: true
+      });
       (0, _fs.writeFileSync)(snapshotPath, stringify(component), {
         flag: 'w'
       });
@@ -42,16 +51,16 @@ const maybeUpdateSnapshot = (snapshotPath, relativeSnapshotPath, component) => {
 };
 
 module.exports = (assert, component, id, outputBuffer = _process.default.stdout) => {
-  const serialisedComponent = JSON.parse(stringify((0, _enzymeToJson.shallowToJson)(component, {
+  const serialisedComponent = (0, _utils.isEnzymeWrapper)(component) ? JSON.parse(stringify((0, _enzymeToJson.shallowToJson)(component, {
     noKey: true
-  })));
+  }))) : component;
   const {
     snapshotPath,
     relativeSnapshotPath
   } = (0, _getSnapshotPath.default)(id);
 
   try {
-    const snapshot = JSON.parse((0, _fs.readFileSync)(snapshotPath));
+    const snapshot = JSON.parse((0, _fs.readFileSync)(snapshotPath).toString());
 
     if ((0, _lodash.isEqual)(serialisedComponent, snapshot)) {
       assert.pass(`Snapshot matches ${id}`);
