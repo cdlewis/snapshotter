@@ -40,9 +40,13 @@ const maybeUpdateSnapshot = (snapshotPath, relativeSnapshotPath, component) => {
     if (shouldUpdate === 'y') {
       // Attempt to create the directory if it doesn't already exist (requires Node 10+)
       const parentDirectory = (0, _path.dirname)(snapshotPath);
-      (0, _fs.mkdirSync)(parentDirectory, {
-        recursive: true
-      });
+
+      try {
+        (0, _fs.mkdirSync)(parentDirectory, {
+          recursive: true
+        });
+      } catch (err) {}
+
       (0, _fs.writeFileSync)(snapshotPath, stringify(component), {
         flag: 'w'
       });
