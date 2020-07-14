@@ -5,6 +5,7 @@ import readlineSync from 'readline-sync';
 import { shallowToJson } from 'enzyme-to-json';
 import diff from 'jest-diff';
 import getSnapshotPath from './util/get-snapshot-path';
+import { isEnzymeWrapper } from 'enzyme-to-json/utils.js';
 
 const stringify = object =>
   JSON.stringify(
@@ -37,9 +38,9 @@ const maybeUpdateSnapshot = (snapshotPath, relativeSnapshotPath, component) => {
 };
 
 module.exports = (assert, component, id, outputBuffer = process.stdout) => {
-  const serialisedComponent = JSON.parse(
-    stringify(shallowToJson(component, { noKey: true }))
-  );
+  const serialisedComponent = isEnzymeWrapper(component)
+    ? JSON.parse(stringify(shallowToJson(component, { noKey: true })))
+    : component;
   const { snapshotPath, relativeSnapshotPath } = getSnapshotPath(id);
 
   try {

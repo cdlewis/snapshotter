@@ -3,8 +3,9 @@
 # Snapshotter
 
 Snapshot testing is a compelling feature but sometimes it isn't possible to port
-large projects to tools like Jest. Snapshotter is designed to work within an
-existing Tape/Enzyme setup while providing some basic snapshot functionality.
+large projects to tools like Jest. Snapshotter is designed to be a drop-in replacement
+for Jest's `toMatchSnapshot` function. For backwards compatibility purposes, it
+includes built-in support for serialising Enzyme components.
 
 ![Screenshot](/screenshot.png?raw=true "Screenshot")
 

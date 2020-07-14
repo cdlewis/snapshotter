@@ -29,3 +29,13 @@ test('snapshotter handles multiple files', assert => {
   compareToSnapshot(assert, shallowWrapper, 'TestClass-Fixed');
   assert.end();
 });
+
+test('snapshotter handles arbitrary json files', assert => {
+  const arbitraryJson = {
+    reducers: {
+      tasks: [{ name: 'taskA' }]
+    }
+  };
+  compareToSnapshot(assert, arbitraryJson, 'ArbitraryJson');
+  assert.end();
+});
