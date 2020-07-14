@@ -1,11 +1,12 @@
 import { get, isEqual } from 'lodash';
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import process from 'process';
 import readlineSync from 'readline-sync';
 import { shallowToJson } from 'enzyme-to-json';
 import diff from 'jest-diff';
 import getSnapshotPath from './util/get-snapshot-path';
 import { isEnzymeWrapper } from 'enzyme-to-json/utils.js';
+import { dirname } from 'path';
 
 const stringify = object =>
   JSON.stringify(
@@ -32,6 +33,10 @@ const maybeUpdateSnapshot = (snapshotPath, relativeSnapshotPath, component) => {
     );
 
     if (shouldUpdate === 'y') {
+      // Attempt to create the directory if it doesn't already exist (requires Node 10+)
+      const parentDirectory = dirname(snapshotPath);
+      mkdirSync(parentDirectory, { recursive: true });
+
       writeFileSync(snapshotPath, stringify(component), { flag: 'w' });
     }
   }

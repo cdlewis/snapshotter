@@ -18,7 +18,8 @@ test('snapshotter detects changes', assert => {
   const shallowWrapper = Enzyme.shallow(<TestClass />);
   compareToSnapshot(mockTape, shallowWrapper, 'TestClass', {
     write: diff => {
-      assert.deepEqual(diff, expectedJestDiff);
+      // We expect a particular diff output from Jest. Use Snapshotter to validate this.
+      compareToSnapshot(assert, diff, 'Class-ExpectedJestDiff');
       assert.end();
     }
   });
