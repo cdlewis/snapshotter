@@ -25,7 +25,7 @@
     "readline-sync": "^1.4.6"
   },
   "peerDependencies": {
-    "tape": "^4.0.0"
+    "tape": "^5.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -42,7 +42,7 @@
     "prettier": "^1.19.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "tape": "^4.0.0"
+    "tape": "^5.0.0"
   },
   "snapshotter": {
     "snapshotPath": "./test/snapshots"
